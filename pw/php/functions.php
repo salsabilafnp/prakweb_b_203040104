@@ -99,13 +99,13 @@ function tambah($data)
   //$gambar = htmlspecialchars($data['gambar']);
 
   // upload gambar
-  $picture = upload();
+  $gambar = upload();
 
-  if (!$picture) {
+  if (!$gambar) {
     return false;
   }
 
-  $query = "INSERT INTO buku VALUES ('$id', '$picture', '$judul_buku', '$genre', '$pengarang', '$penerbit', '$tahun_terbit')";
+  $query = "INSERT INTO buku VALUES ('$id', '$judul_buku', '$genre', '$pengarang', '$penerbit', '$tahun_terbit', '$gambar')";
 
   mysqli_query($conn, $query) or die(mysqli_error($conn));
   return mysqli_affected_rows($conn);
