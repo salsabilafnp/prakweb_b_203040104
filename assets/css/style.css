@@ -1,0 +1,127 @@
+/* Fonts */
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/poppins-medium-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('../fonts/oswald-demibold-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/roboto-medium-webfont.woff') format('woff');
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
+}
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Background Color */
+/* Background Color */
+.bg-main {
+  background-color: #36535D !important;
+}
+
+.bg-1 {
+  background-color: #CEB8A6 !important;
+}
+
+.bg-2 {
+  background-color: #E9CCB1 !important;
+}
+
+.bg-3 {
+  background-color: #EBCFC4 !important;
+}
+
+.bg-4 {
+  background-color: #D3C4BE !important;
+}
+
+/* Text */
+.text-main {
+  color: #FDFCFA;
+}
+
+.text-sec {
+  color: #EAE4D9;
+}
+
+.text-main-dark {
+  color: #333;
+}
+
+/* Link */
+.link-main {
+  color: #FDFCFA;
+  text-decoration: none;
+}
+
+.link-sec {
+  color: #EAE4D9;
+  text-decoration: none;
+}
+
+.link-main-dark {
+  color: #333;
+  text-decoration: none;
+}
+
+.link-main:hover {
+  color: #94938f;
+}
+
+.link-sec:hover {
+  color: #a5a095;
+}
+
+.link-main-dark:hover {
+  color: rgb(105, 102, 102);
+}
+
+/* Button */
+.btn-1 {
+  color: #333 !important;
+  background-color: #E9CCB1 !important;
+}
+
+.btn-1:hover {
+  color: rgb(46, 44, 44) !important;
+  background-color: #ceb59d !important;
+}
+
+.btn-2 {
+  color: #333 !important;
+  background-color: #EBCFC4 !important;
+}
+
+.btn-2:hover {
+  color: rgb(46, 44, 44) !important;
+  background-color: #c9b1a7 !important;
+}
+
+.btn-3 {
+  color: #333 !important;
+  background-color: #D3C4BE !important;
+}
+
+.btn-3:hover {
+  color: rgb(46, 44, 44) !important;
+  background-color: #ac9f9a !important;
+}
+
+/* section */
+section {
+  min-height: 400px;
+  padding-top: 50px;
+}
