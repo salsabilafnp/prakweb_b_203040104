@@ -32,7 +32,7 @@ if (isset($_POST['cari'])) {
     <div class="container">
       <a href="index.php" class="fw-bold fst-italic align-middle navbar-brand">Pesona Store</a>
       <ul class="navbar-nav">
-        <a class="nav-item nav-link page-scroll" href="index.php">
+        <a class="nav-item nav-link page-scroll" href="php/admin.php">
           <button type="button" class="btn btn-1"><i class="bi bi-box-arrow-in-right"></i> Admin Page</button>
         </a>
       </ul>
@@ -56,7 +56,7 @@ if (isset($_POST['cari'])) {
                   <?= $book['pengarang']; ?>, <?= $book['tahun_terbit']; ?>
                 </p>
                 <p class="card-text">
-                  <a class="btn btn-1 col-8 fw-bold" href="php/detail.php?id=<?= $book['id'] ?>">Detail!</a>
+                  <a class="btn btn-1 col-8 fw-bold" href="php/detail.php?id=<?= $book['id'] ?>">Detail</a>
                 </p>
               </div>
             </div>

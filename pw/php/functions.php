@@ -90,12 +90,13 @@ function tambah($data)
 {
   $conn = koneksi();
 
-  $name = htmlspecialchars($data['name']);
-  $color = htmlspecialchars($data['color']);
-  $stok = htmlspecialchars($data['stok']);
-  $price = htmlspecialchars($data['price']);
-  $category = htmlspecialchars($data['category']);
-  //$picture = htmlspecialchars($data['picture']);
+  $id = htmlspecialchars($data['id']);
+  $judul_buku = htmlspecialchars($data['judul_buku']);
+  $genre = htmlspecialchars($data['genre']);
+  $pengarang = htmlspecialchars($data['pengarang']);
+  $penerbit = htmlspecialchars($data['penerbit']);
+  $tahun_terbit = htmlspecialchars($data['tahun_terbit']);
+  //$gambar = htmlspecialchars($data['gambar']);
 
   // upload gambar
   $picture = upload();
@@ -104,7 +105,7 @@ function tambah($data)
     return false;
   }
 
-  $query = "INSERT INTO cheval VALUES ('', '$picture', '$name', '$color', '$stok', '$price', '$category')";
+  $query = "INSERT INTO buku VALUES ('$id', '$picture', '$judul_buku', '$genre', '$pengarang', '$penerbit', '$tahun_terbit')";
 
   mysqli_query($conn, $query) or die(mysqli_error($conn));
   return mysqli_affected_rows($conn);
@@ -116,12 +117,12 @@ function hapus($id)
   $conn = koneksi();
 
   // menghapus gambar di folder img
-  $shoe = query("SELECT * FROM cheval WHERE id = $id");
-  if ($shoe['picture'] != 'blank.png') {
-    unlink('../assets/img/' . $shoe['picture']);
+  $books = query("SELECT * FROM buku WHERE id = '$id'");
+  if ($books['picture'] != 'blank.png') {
+    unlink('../../img/' . $books['gambar']);
   }
 
-  mysqli_query($conn, "DELETE FROM cheval WHERE id = $id") or die(mysqli_error($conn));
+  mysqli_query($conn, "DELETE FROM buku WHERE id = '$id'") or die(mysqli_error($conn));
   return mysqli_affected_rows($conn);
 }
 
@@ -130,31 +131,31 @@ function ubah($data)
 {
   $conn = koneksi();
 
-  $id = $data['id'];
-  $name = htmlspecialchars($data['name']);
-  $color = htmlspecialchars($data['color']);
-  $stok = htmlspecialchars($data['stok']);
-  $price = htmlspecialchars($data['price']);
-  $category = htmlspecialchars($data['category']);
-  $picture_old = htmlspecialchars($data['picture_old']);
+  $id = htmlspecialchars($data['id']);
+  $judul_buku = htmlspecialchars($data['judul_buku']);
+  $genre = htmlspecialchars($data['genre']);
+  $pengarang = htmlspecialchars($data['pengarang']);
+  $penerbit = htmlspecialchars($data['penerbit']);
+  $tahun_terbit = htmlspecialchars($data['tahun_terbit']);
+  $gambar_lama = htmlspecialchars($data['gambar_lama']);
 
-  $picture = upload();
-  if (!$picture) {
+  $gambar = upload();
+  if (!$gambar) {
     return false;
   }
 
-  if ($picture == 'blank.png') {
-    $picture = $picture_old;
+  if ($gambar == 'blank.png') {
+    $gambar = $gambar_lama;
   }
 
-  $query = "UPDATE cheval SET 
-              picture = '$picture',
-              name = '$name',
-              color = '$color',
-              stok = '$stok',
-              price = '$price',
-              category = '$category'
-              WHERE id = $id;";
+  $query = "UPDATE buku SET 
+              gambar = '$gambar',
+              judul_buku = '$judul_buku',
+              genre = '$genre',
+              pengarang = '$pengarang',
+              penerbit = '$penerbit',
+              tahun_terbit = '$tahun_terbit'
+              WHERE id = '$id';";
 
   mysqli_query($conn, $query) or die(mysqli_error($conn));
   return mysqli_affected_rows($conn);
@@ -165,11 +166,12 @@ function cari($keyword)
 {
   $conn = koneksi();
 
-  $query = "SELECT * FROM cheval
-            WHERE name LIKE '%$keyword%' OR
-            color LIKE '%$keyword%' OR
-            price LIKE '%$keyword%' OR
-            category LIKE '%$keyword%'";
+  $query = "SELECT * FROM buku
+            WHERE judul_buku LIKE '%$keyword%' OR
+            genre LIKE '%$keyword%' OR
+            pengarang LIKE '%$keyword%' OR
+            penerbit LIKE '%$keyword%'
+            OR tahun_terbit LIKE '%$keyword%'";
 
   $result = mysqli_query($conn, $query);
 
