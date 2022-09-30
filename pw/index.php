@@ -25,7 +25,7 @@ if (isset($_POST['cari'])) {
   <title>Pesona's Store</title>
 </head>
 
-<body>
+<body class="bg-1">
 
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-main mx-auto">

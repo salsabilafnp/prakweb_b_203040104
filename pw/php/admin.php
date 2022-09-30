@@ -31,7 +31,7 @@ if (isset($_POST['cari'])) {
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-main mx-auto">
     <div class="container">
-      <a href="../php/admin.php" class="fw-bold fst-italic align-middle navbar-brand">Pesona Store</a>
+      <a href="../index.php" class="fw-bold fst-italic align-middle navbar-brand">Pesona Store</a>
     </div>
   </nav>
 
