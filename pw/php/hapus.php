@@ -1,16 +1,9 @@
 <?php
-session_start();
-
-if (!isset($_SESSION["username"])) {
-  header("location: login.php");
-  exit;
-}
-
 require 'functions.php';
 
 // jika tidak ada id di url
 if (!isset($_GET['id'])) {
-  header("Location: index.php");
+  header("Location: admin.php");
   exit;
 }
 

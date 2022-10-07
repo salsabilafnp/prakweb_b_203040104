@@ -10,7 +10,7 @@ require 'functions.php';
 
 $id = $_GET['id'];
 
-$books = query("SELECT * FROM cheval WHERE id = $id");
+$books = query("SELECT * FROM buku WHERE id = '$id'");
 
 if (isset($_POST['ubah'])) {
   if (ubah($_POST) > 0) {
@@ -35,10 +35,10 @@ if (isset($_POST['ubah'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- CSS -->
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/icons/font/bootstrap-icons.css">
-  <title>Pesona Store - Edit Item</title>
+  <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/icons/font/bootstrap-icons.css">
+  <title>Pesona Store - Ubah</title>
 </head>
 
 <body class="bg-main">
@@ -48,48 +48,40 @@ if (isset($_POST['ubah'])) {
     <div class="row justify-content-center">
       <div class="card col-sm-10 col-md-8">
         <div class="card-body">
-          <h4 class="card-title text-center">Edit Item on Pesona Store</h4>
+          <h4 class="card-title text-center">Ubah Data - Pesona's Store</h4>
           <form action="" method="POST" enctype="multipart/form-data">
             <div class="mb-2">
-              <label for="name" class="col-form-label">Name</label>
-              <input type="text" name="name" class="form-control" placeholder="Write Name of Item" required autofocus value="<?= $books['name']; ?>">
+              <input type="hidden" name="id" class="form-control" placeholder="Kode Buku" required autofocus value="<?= $books['id']; ?>">
             </div>
             <div class="mb-2">
-              <label for="name" class="col-form-label">Name</label>
-              <input type="text" name="name" class="form-control" placeholder="Write Name of Item" required autofocus value="<?= $books['name']; ?>">
+              <label for="judul_buku" class="col-form-label">Judul Buku</label>
+              <input type="text" name="judul_buku" class="form-control" placeholder="Judul Buku" required autofocus value="<?= $books['judul_buku']; ?>">
             </div>
             <div class="mb-2">
-              <label for="color" class="col-form-label">Color</label>
-              <textarea type="color" name="color" class="form-control" placeholder="Write The Available Color of Item" required><?= $books['color']; ?></textarea>
+              <label for="genre" class="col-form-label">Genre</label>
+              <input type="text" name="genre" class="form-control" placeholder="Genre Buku" required autofocus value="<?= $books['genre']; ?>">
             </div>
             <div class="mb-2">
-              <label for="stok" class="col-form-label">Stock of Item</label>
-              <input type="text" type="stok" name="stok" class="form-control" placeholder="How Many Items are Available?" required value="<?= $books['stok']; ?>">
-              <p class="ms-2 text-muted">Write in numbers</p>
+              <label for="pengarang" class="col-form-label">Pengarang</label>
+              <input type="text" name="pengarang" class="form-control" placeholder="Pengarang Buku" required autofocus value="<?= $books['pengarang']; ?>">
             </div>
             <div class="mb-2">
-              <label for="price" class="col-form-label">Price</label>
-              <input type="text" type="price" name="price" class="form-control" placeholder="Write The Price of Item" required value="<?= $books['price']; ?>">
+              <label for="penerbit" class="col-form-label">Penerbit</label>
+              <input type="text" name="penerbit" class="form-control" placeholder="Penerbit Buku" required autofocus value="<?= $books['penerbit']; ?>">
             </div>
             <div class="mb-2">
-              <input type="hidden" name="picture_old" value="<?= $books['picture']; ?>">
-              <label for="picture" class="col-form-label">Picture</label>
-              <input type="file" name="picture" class="form-control picture" placeholder="Write Picture Name of Item" onchange="previewImage()">
-              <img src="../assets/img/<?= $books['picture']; ?>" width="150" class="mt-3 d-block img-preview">
+              <label for="tahun_terbit" class="col-form-label">Tahun Terbit</label>
+              <input type="text" name="tahun_terbit" class="form-control" placeholder="Tahun Terbit" required autofocus value="<?= $books['tahun_terbit']; ?>">
             </div>
-            <div class="mb-3">
-              <label for="category" class="col-form-label">Category</label>
-              <select class="form-select" name="category" required value="<?= $books['category']; ?>">
-                <option disabled>Select the Category</option>
-                <option value="Casual">Casual</option>
-                <option value="Canvas">Canvas</option>
-                <option value="Runshoes">Runshoes</option>
-                <option value="Sport">Sport</option>
-              </select>
+            <div class="mb-2">
+              <input type="hidden" name="gambar_lama" value="<?= $books['gambar']; ?>">
+              <label for="gambar" class="col-form-label">Picture</label>
+              <input type="file" name="gambar" class="form-control picture" placeholder="Unggah Gambar" onchange="previewImage()">
+              <img src="../../img/<?= $books['gambar']; ?>" width="150" class="mt-3 d-block img-preview">
             </div>
             <!-- Edit & Back -->
-            <button type="submit" name="ubah" class="btn btn-primary">Edit</button>
-            <a href="../php/admin.php" class="mx-3 text-secondary">Back</a>
+            <button type="submit" name="ubah" class="btn btn-primary">Ubah</button>
+            <a href="admin.php" class="mx-3 text-secondary">Back</a>
           </form>
         </div>
       </div>
@@ -97,9 +89,9 @@ if (isset($_POST['ubah'])) {
   </div>
 
   <!-- Script -->
-  <script src="../assets/js/script.js"></script>
-  <script src="../assets/js/jquery-3.5.1.js"></script>
-  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/script.js"></script>
+  <script src="../../assets/js/jquery-3.5.1.js"></script>
+  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

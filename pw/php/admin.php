@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 require 'functions.php';
 
 $books = query("SELECT * FROM buku");
@@ -37,7 +35,7 @@ if (isset($_POST['cari'])) {
 
   <!-- Admin -->
   <section id="admin" class="my-5 container justify-content-center">
-    <h1 class="text-center display-5 fw-bold mb-3">Cheval's Database</h1>
+    <h1 class="text-center display-5 fw-bold mb-3">Pesona's Database</h1>
 
     <!-- Action Bar -->
     <form action="" method="POST" class="mb-3">
@@ -45,7 +43,7 @@ if (isset($_POST['cari'])) {
       <input type="text" name="keyword" size="30" placeholder="masukkan keyword pencarian..." autocomplete="off" autofocus>
       <button type="submit" name="cari" class="btn btn-secondary">Search</button>
       <!-- add -->
-      <a href="../php/tambah.php" class="btn btn-primary float-sm-end"><i class="bi bi-plus-circle"></i> Add Item</a>
+      <a href="tambah.php" class="btn btn-primary float-sm-end"><i class="bi bi-plus-circle"></i> Add Item</a>
     </form>
 
     <!-- tabel database -->
@@ -76,9 +74,9 @@ if (isset($_POST['cari'])) {
           <td><?= $no; ?></td>
           <td class="text-center col-1">
             <!-- button edit -->
-            <a href="ubah.php?id=<?= $book['id']; ?>" class="btn btn-sm btn-outline-primary m-1"><i class="bi bi-pencil-square d-md-block d-sm-none"></i> Edit</a>
+            <a href="ubah.php?id=<?= $book['id']; ?>" class="btn btn-sm btn-outline-primary m-1"><i class="bi bi-pencil-square d-md-block d-sm-none"></i> Ubah</a>
             <!-- button delete -->
-            <a href="hapus.php?id=<?= $book['id']; ?>" class="delete btn btn-sm btn-outline-danger" onclick="return confirm('Delete This?')"><i class="bi bi-trash d-md-block d-sm-none"></i> Delete</a>
+            <a href="hapus.php?id=<?= $book['id']; ?>" class="delete btn btn-sm btn-outline-danger" onclick="return confirm('Delete This?')"><i class="bi bi-trash d-md-block d-sm-none"></i> Hapus</a>
           </td>
           <td class="col-3">
             <img class="m-1" src="../../img/<?= $book['gambar']; ?>" width="50px">
@@ -95,9 +93,9 @@ if (isset($_POST['cari'])) {
   </section>
 
   <!-- Script -->
-  <script src="../assets/js/script.js"></script>
-  <script src="../assets/js/jquery-3.5.1.js"></script>
-  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/script.js"></script>
+  <script src="../../assets/js/jquery-3.5.1.js"></script>
+  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

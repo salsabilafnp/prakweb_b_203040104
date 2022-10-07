@@ -30,11 +30,11 @@ function query($sql)
 // Upload
 function upload()
 {
-  $nama_file = $_FILES['picture']['name'];
-  $tipe_file = $_FILES['picture']['type'];
-  $ukuran_file = $_FILES['picture']['size'];
-  $error = $_FILES['picture']['error'];
-  $tmp_file = $_FILES['picture']['tmp_name'];
+  $nama_file = $_FILES['gambar']['name'];
+  $tipe_file = $_FILES['gambar']['type'];
+  $ukuran_file = $_FILES['gambar']['size'];
+  $error = $_FILES['gambar']['error'];
+  $tmp_file = $_FILES['gambar']['tmp_name'];
 
   // cek tidak ada gambar dipilih
   if ($error == 4) {
@@ -90,7 +90,6 @@ function tambah($data)
 {
   $conn = koneksi();
 
-  $id = htmlspecialchars($data['id']);
   $judul_buku = htmlspecialchars($data['judul_buku']);
   $genre = htmlspecialchars($data['genre']);
   $pengarang = htmlspecialchars($data['pengarang']);
@@ -105,9 +104,10 @@ function tambah($data)
     return false;
   }
 
-  $query = "INSERT INTO buku VALUES ('$id', '$judul_buku', '$genre', '$pengarang', '$penerbit', '$tahun_terbit', '$gambar')";
+  $query = "INSERT INTO buku VALUES ('', '$judul_buku', '$genre', '$pengarang', '$penerbit', '$tahun_terbit', '$gambar')";
 
   mysqli_query($conn, $query) or die(mysqli_error($conn));
+  //var_dump($conn); die();
   return mysqli_affected_rows($conn);
 }
 
@@ -118,7 +118,7 @@ function hapus($id)
 
   // menghapus gambar di folder img
   $books = query("SELECT * FROM buku WHERE id = '$id'");
-  if ($books['picture'] != 'blank.png') {
+  if ($books['gambar'] != 'blank.png') {
     unlink('../../img/' . $books['gambar']);
   }
 
@@ -138,8 +138,8 @@ function ubah($data)
   $penerbit = htmlspecialchars($data['penerbit']);
   $tahun_terbit = htmlspecialchars($data['tahun_terbit']);
   $gambar_lama = htmlspecialchars($data['gambar_lama']);
-
   $gambar = upload();
+
   if (!$gambar) {
     return false;
   }
@@ -149,12 +149,12 @@ function ubah($data)
   }
 
   $query = "UPDATE buku SET 
-              gambar = '$gambar',
               judul_buku = '$judul_buku',
               genre = '$genre',
               pengarang = '$pengarang',
               penerbit = '$penerbit',
-              tahun_terbit = '$tahun_terbit'
+              tahun_terbit = '$tahun_terbit',
+              gambar = '$gambar'
               WHERE id = '$id';";
 
   mysqli_query($conn, $query) or die(mysqli_error($conn));
